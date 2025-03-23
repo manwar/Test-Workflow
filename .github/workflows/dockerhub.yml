@@ -19,6 +19,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
+      - name: Debug
+        run: |
+          echo "Docker Hub Username: ${{ secrets.DOCKER_HUB_USERNAME }}"
+          echo "Docker Hub Token: ${{ secrets.DOCKER_HUB_TOKEN }}"
+
       - name: Build and Push
         run: |
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:${{ github.ref_name }} .
